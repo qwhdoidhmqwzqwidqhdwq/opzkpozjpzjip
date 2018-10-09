@@ -34,6 +34,7 @@ bot.on("message", async msg => {
   * let invitecheck = /(?:https?:\/)?discord(\W|\d|_)*(?:app.com\/invite|.gg)+\/(\W|\d|_)*[a-zA-Z0-9]/gi.test(msg.content);
   * check if there's invite in messages.
   */
+
   let no = bot.emojis.find(e => e.id == "463934399210061854");
   let invitecheck = /(?:https?:\/)?discord(\W|\d|_)*(?:app.com\/invite|.gg)+\/(\W|\d|_)*[a-zA-Z0-9]/gi.test(msg.content);
   if(invitecheck) {
@@ -52,6 +53,10 @@ bot.on("message", async msg => {
       let logs = msg.guild.channels.find(c => c.id == "499292486821478410");
       return logs.send(embed2);
     }
+  }
+  let question1 = /سيرفر*متى*يفتح/gi.test(msg.content);
+  if(question1) {
+    return msg.channel.send("test").then(r => r.delete(5000));
   }
 
   if(!msg.content.toLowerCase().startsWith(prefix)) return;
