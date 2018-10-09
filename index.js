@@ -46,7 +46,7 @@ bot.on("message", async msg => {
 
       let embed2 = new Discord.RichEmbed()
       .setAuthor("Devvy | Auto Moderation")
-      .setDescription(`${no} <@${msg.author.id}>'s message has been deleted in <#${msg.channel.id}>\n\n**Reason:** Invite link detected`)
+      .setDescription(`${no} <@${msg.author.id}>'s message has been deleted in <#${msg.channel.id}>\n**Message:** ${msg.content}\n**Reason:** Invite link detected`)
       .setFooter(`${msg.guild.name}`)
       msg.channel.send(embed).then(r => r.delete(12000));
       let logs = msg.guild.channels.find(c => c.id == "499292486821478410");
