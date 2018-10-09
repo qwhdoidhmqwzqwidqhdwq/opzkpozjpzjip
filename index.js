@@ -34,14 +34,14 @@ bot.on("message", async msg => {
   * let invitecheck = /(?:https?:\/)?discord(\W|\d|_)*(?:app.com\/invite|.gg)+\/(\W|\d|_)*[a-zA-Z0-9]/gi.test(msg.content);
   * check if there's invite in messages.
   */
-
+  let no = bot.emojis.find(e => e.id == "463934399210061854");
   let invitecheck = /(?:https?:\/)?discord(\W|\d|_)*(?:app.com\/invite|.gg)+\/(\W|\d|_)*[a-zA-Z0-9]/gi.test(msg.content);
   if(invitecheck) {
     if(!msg.member.roles.exists(r => r.name == "Ads")) {
       msg.delete();
       let embed = new Discord.RichEmbed()
       .setAuthor("Devvy | Auto Moderation")
-      .setDescription(`:no: <@${msg.author.id}> your message has been deleted.\n\n**Reason:** Invite link detected`)
+      .setDescription(`${no} <@${msg.author.id}> your message has been deleted.\n\n**Reason:** Invite link detected`)
       .setFooter(`${msg.guild.name}`)
       return msg.channel.send(embed).then(r => r.delete(20000));
     }
