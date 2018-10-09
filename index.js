@@ -54,9 +54,9 @@ bot.on("message", async msg => {
       return logs.send(embed2);
     }
   }
-  let question1 = /سيرفر*متى*يفتح/gi.test(msg.content);
+  let question1 = /سيرفر|السيرفر+(\W|\d|_)*متى+(\W|\d|_)*يفتح+(\W|\d|_)*/gi.test(msg.content) || /متى+(\W|\d|_)*يفتح+(\W|\d|_)*سيرفر|السيرفر+(\W|\d|_)*/gi.test(msg.content)
   if(question1) {
-    return msg.channel.send("test").then(r => r.delete(5000));
+    return msg.channel.send("لما تطلع وماترجع ابد").then(r => r.delete(2000));
   }
 
   if(!msg.content.toLowerCase().startsWith(prefix)) return;
