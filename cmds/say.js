@@ -30,6 +30,13 @@ module.exports = {
       return;
     }
     msg.delete();
+    let embed = new Discord.RichEmbed()
+    .setAuthor("Devvy | Logger")
+    .addField(`Moderator`, `<@${msg.author.id}>`, true)
+    .addField(`Channel`, `<#${msg.channel.id}>`, true)
+    .addField(`Message`, params.join(" "))
+    .setColor(config.blue)
+    .setFooter(msg.guild.name)
     msg.channel.send(params.join(" "));
   }
 }

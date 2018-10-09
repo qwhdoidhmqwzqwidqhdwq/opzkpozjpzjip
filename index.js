@@ -44,11 +44,13 @@ bot.on("message", async msg => {
       .setAuthor("Devvy | Auto Moderation")
       .setDescription(`${no} <@${msg.author.id}> your message has been deleted.\n\n**Reason:** Invite link detected`)
       .setFooter(`${msg.guild.name}`)
+      .setColor(config.red)
 
       let embed2 = new Discord.RichEmbed()
       .setAuthor("Devvy | Auto Moderation")
       .setDescription(`${no} <@${msg.author.id}>'s message has been deleted in <#${msg.channel.id}>\n**Message:** ${msg.content}\n**Reason:** Invite link detected`)
       .setFooter(`${msg.guild.name}`)
+      .setColor(config.blue)
       msg.channel.send(embed).then(r => r.delete(12000));
       let logs = msg.guild.channels.find(c => c.id == "499292486821478410");
       return logs.send(embed2);
@@ -86,11 +88,13 @@ bot.on("messageUpdate", async (old, newx) => {
       .setAuthor("Devvy | Auto Moderation")
       .setDescription(`${no} <@${old.author.id}> your message has been deleted.\n\n**Reason:** Invite link detected`)
       .setFooter(`${old.guild.name}`)
+      .setColor(config.red)
 
       let embed2 = new Discord.RichEmbed()
       .setAuthor("Devvy | Auto Moderation")
       .setDescription(`${no} <@${old.author.id}>'s message has been deleted in <#${newx.channel.id}>\n**Message:** ${newx.content}\n**Reason:** Invite link detected`)
       .setFooter(`${old.guild.name}`)
+      .setColor(config.blue)
       old.channel.send(embed).then(r => r.delete(12000));
       let logs = old.guild.channels.find(c => c.id == "499292486821478410");
       return logs.send(embed2);
@@ -103,7 +107,7 @@ bot.on("messageUpdate", async (old, newx) => {
 bot.on("ready", async () => {
   log(`Username: ${bot.user.tag}`);
   log(`on: ${bot.guilds.size} guild(s)`);
-  bot.user.setActivity(`Your future`, {url: "https://twitch.tv/none", type: `watching`});
+  bot.user.setActivity(`Nothing.`, {url: "https://twitch.tv/none", type: `watching`});
 });
 
 bot.reload = function(command) {
