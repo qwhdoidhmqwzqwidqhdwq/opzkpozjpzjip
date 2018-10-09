@@ -33,6 +33,7 @@ module.exports = {
     let embed = new Discord.RichEmbed()
     .setAuthor("Devvy | Logger")
     .addField(`Moderator`, `<@${msg.author.id}>`, true)
+    .addField(`Command`, `\`say\``, true)
     .addField(`Channel`, `<#${msg.channel.id}>`, true)
     .addField(`Message`, params.join(" "))
     .setColor(config.blue)
