@@ -50,7 +50,7 @@ bot.on("message", async msg => {
       .setFooter(`${msg.guild.name}`)
       msg.channel.send(embed).then(r => r.delete(12000));
       let logs = msg.guild.channels.find(c => c.id == "499292486821478410");
-      return logs.send(embed2));
+      return logs.send(embed2);
     }
   }
 
