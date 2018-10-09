@@ -80,7 +80,7 @@ bot.on("messageUpdate", async (old, newx) => {
   let no = bot.emojis.find(e => e.id == "463934399210061854");
   let invitecheck = /(?:https?:\/)?discord(\W|\d|_)*(?:app.com\/invite|.gg)+\/(\W|\d|_)*[a-zA-Z0-9]/gi.test(newx.content);
   if(invitecheck) {
-    if(!msg.member.roles.some(r => r.name == "Ads")) {
+    if(!newx.member.roles.some(r => r.name == "Ads")) {
       old.delete();
       let embed = new Discord.RichEmbed()
       .setAuthor("Devvy | Auto Moderation")
