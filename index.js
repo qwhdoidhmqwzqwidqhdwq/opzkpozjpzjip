@@ -91,7 +91,7 @@ bot.on("messageUpdate", async (old, newx) => {
       .setAuthor("Devvy | Auto Moderation")
       .setDescription(`${no} <@${old.author.id}>'s message has been deleted in <#${newx.channel.id}>\n**Message:** ${newx.content}\n**Reason:** Invite link detected`)
       .setFooter(`${old.guild.name}`)
-      msg.channel.send(embed).then(r => r.delete(12000));
+      old.channel.send(embed).then(r => r.delete(12000));
       let logs = old.guild.channels.find(c => c.id == "499292486821478410");
       return logs.send(embed2);
     }
