@@ -13,7 +13,7 @@ module.exports = {
   },
   run: async (bot, msg, params) => {
     if (cooldown.has(msg.author.id))
-    return msg.delete();
+    return msg.channel.send(`You have to wait 15 seconds every time you use this command..`).then(r => r.delete(3000));
 
     cooldown.add(msg.author.id);
     setTimeout(() => {
