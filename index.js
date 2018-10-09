@@ -49,7 +49,8 @@ bot.on("message", async msg => {
       .setDescription(`${no} <@${msg.author.id}>'s message has been deleted in <#${msg.channel.id}>\n\n**Reason:** Invite link detected`)
       .setFooter(`${msg.guild.name}`)
       msg.channel.send(embed).then(r => r.delete(12000));
-      return msg.guild.channels.find(c => c.id == "499292486821478410").send(embed2));
+      let logs = msg.guild.channels.find(c => c.id == "499292486821478410");
+      return logs.send(embed2));
     }
   }
 
