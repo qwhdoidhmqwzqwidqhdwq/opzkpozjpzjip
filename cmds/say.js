@@ -13,12 +13,12 @@ module.exports = {
   run: async (bot, msg, params) => {
     if(params.length > 2000) {
       msg.delete();
-      msg.channel.send("The message length cannot be longer than 2000 characters").then(r => r.delete(7000));
+      msg.channel.send("The message length cannot be longer than 2000 characters").then(r => r.delete(4000));
       return;
     }
     if(!params.join(" ")) {
       msg.delete()
-      msg.channel.send(`Invaild arguments, \`/say <message>\``).then(r => r.delete(7000));
+      msg.channel.send(`Invaild arguments, \`/say <message>\``).then(r => r.delete(3000));
       return;
     }
     msg.delete();

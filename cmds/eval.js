@@ -65,7 +65,7 @@ exports.run = (bot, msg) => {
 exports.settings = {
     aliases: [],
     enabled: true,
-    permLevel: 4,
+    permLevel: 3,
     guildOnly: false
 }
 module.exports.help = {

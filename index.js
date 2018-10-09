@@ -132,13 +132,11 @@ bot.reload = function(command) {
 bot.elevation = function(msg) {
 
   let permlvl = 0;
-  let x1 = msg.guild.roles.find(c => c.name === "Tier I");
-  if(x1 && msg.member.roles.has(x1.id)) permlvl = 1;
   let x2 = msg.guild.roles.find(c => c.name === "Staff");
-  if(x2 && msg.member.roles.has(x2.id)) permlvl = 2;
+  if(x2 && msg.member.roles.has(x2.id)) permlvl = 1;
   let x3 = msg.guild.roles.find(c => c.name === "Owner");
-  if(x3 && msg.member.roles.has(x3.id)) permlvl = 4;
-  if(msg.author.id === config.owner_id) permlvl = 5;
+  if(x3 && msg.member.roles.has(x3.id)) permlvl = 2;
+  if(msg.author.id === config.owner_id) permlvl = 3;
   return permlvl;
 
 };

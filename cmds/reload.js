@@ -8,7 +8,7 @@ module.exports = {
     aliases: ["rl", "r"],
     enabled: true,
     guildOnly: true,
-    permLevel: 11
+    permLevel: 3
   },
   run: async (bot, msg, params) => {
     let command;
