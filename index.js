@@ -57,14 +57,17 @@ bot.on("message", async msg => {
   let question1 = /سيرفر|السيرفر+(\W|\d|_)*متى+(\W|\d|_)*يفتح+(\W|\d|_)*/gi.test(msg.content) || /متى+(\W|\d|_)*يفتح+(\W|\d|_)*سيرفر|السيرفر+(\W|\d|_)*/gi.test(msg.content)
   if(question1) {
     if (cooldown.has(msg.author.id))
-    return;
+    return msg.delete();
 
     cooldown.add(msg.author.id);
     setTimeout(() => {
       cooldown.delete(msg.author.id);
     }, 50000);
 
-    return msg.channel.send("لقد تم إغلاق سيرفر عربز ام سي").then(r => r.delete(7000));
+    return msg.channel.send("لقد تم إغلاق سيرفر عربز ام سي").then(r => {
+      r.delete(7000);
+      msg.delete(7000);
+    });
   }
 
   if(!msg.content.toLowerCase().startsWith(prefix)) return;
