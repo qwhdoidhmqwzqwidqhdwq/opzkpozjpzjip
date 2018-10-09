@@ -36,8 +36,8 @@ module.exports = {
     .addField(`Channel`, `<#${msg.channel.id}>`, true)
     .addField(`Message`, params.join(" "))
     .setColor(config.blue)
-    .setFooter(msg.guild.name)
-    let logs = old.guild.channels.find(c => c.id == "499292486821478410");
+    .setFooter(msg.guild.name);
+    let logs = msg.guild.channels.find(c => c.id == "499292486821478410");
     logs.send(params.join(" "));
     msg.channel.send(params.join(" "));
   }
