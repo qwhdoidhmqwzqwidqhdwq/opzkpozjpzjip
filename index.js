@@ -54,21 +54,6 @@ bot.on("message", async msg => {
       return logs.send(embed2);
     }
   }
-  let question1 = /سيرفر|السيرفر+(\W|\d|_)*متى+(\W|\d|_)*يفتح+(\W|\d|_)*/gi.test(msg.content) || /متى+(\W|\d|_)*يفتح+(\W|\d|_)*سيرفر|السيرفر+(\W|\d|_)*/gi.test(msg.content)
-  if(question1) {
-    if (cooldown.has(msg.author.id))
-    return msg.delete();
-
-    cooldown.add(msg.author.id);
-    setTimeout(() => {
-      cooldown.delete(msg.author.id);
-    }, 50000);
-
-    return msg.channel.send("لقد تم إغلاق سيرفر عربز ام سي").then(r => {
-      r.delete(7000);
-      msg.delete(7000);
-    });
-  }
 
   if(!msg.content.toLowerCase().startsWith(prefix)) return;
   let command = msg.content.split(" ")[0].slice(config.prefix.length);
@@ -91,21 +76,28 @@ bot.on("message", async msg => {
 
 
 bot.on("messageUpdate", async (old, newx) => {
-  let question1 = /سيرفر|السيرفر+(\W|\d|_)*متى+(\W|\d|_)*يفتح+(\W|\d|_)*/gi.test(newx.content) || /متى+(\W|\d|_)*يفتح+(\W|\d|_)*سيرفر|السيرفر+(\W|\d|_)*/gi.test(newx.content)
-  if(question1) {
-    if (cooldown.has(old.author.id))
-    return old.delete();
 
-    cooldown.add(old.author.id);
-    setTimeout(() => {
-      cooldown.delete(old.author.id);
-    }, 50000);
+  let no = bot.emojis.find(e => e.id == "463934399210061854");
+  let invitecheck = /(?:https?:\/)?discord(\W|\d|_)*(?:app.com\/invite|.gg)+\/(\W|\d|_)*[a-zA-Z0-9]/gi.test(newx.content);
+  if(invitecheck) {
+    if(!msg.member.roles.some(r => r.name == "Ads")) {
+      old.delete();
+      let embed = new Discord.RichEmbed()
+      .setAuthor("Devvy | Auto Moderation")
+      .setDescription(`${no} <@${old.author.id}> your message has been deleted.\n\n**Reason:** Invite link detected`)
+      .setFooter(`${old.guild.name}`)
 
-    return newx.channel.send("لقد تم إغلاق سيرفر عربز ام سي").then(r => {
-      r.delete(7000);
-      newx.delete(7000);
-    });
+      let embed2 = new Discord.RichEmbed()
+      .setAuthor("Devvy | Auto Moderation")
+      .setDescription(`${no} <@${old.author.id}>'s message has been deleted in <#${newx.channel.id}>\n**Message:** ${newx.content}\n**Reason:** Invite link detected`)
+      .setFooter(`${old.guild.name}`)
+      msg.channel.send(embed).then(r => r.delete(12000));
+      let logs = old.guild.channels.find(c => c.id == "499292486821478410");
+      return logs.send(embed2);
+    }
   }
+
+
 });
 
 bot.on("ready", async () => {
