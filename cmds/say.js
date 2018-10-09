@@ -38,7 +38,7 @@ module.exports = {
     .setColor(config.blue)
     .setFooter(msg.guild.name);
     let logs = msg.guild.channels.find(c => c.id == "499292486821478410");
-    logs.send(params.join(" "));
+    logs.send(embed);
     msg.channel.send(params.join(" "));
   }
 }
