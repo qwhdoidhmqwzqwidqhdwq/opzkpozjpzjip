@@ -89,6 +89,25 @@ bot.on("message", async msg => {
 
 });
 
+
+bot.on("messageUpdate", async (old, newx) => {
+  let question1 = /سيرفر|السيرفر+(\W|\d|_)*متى+(\W|\d|_)*يفتح+(\W|\d|_)*/gi.test(newx.content) || /متى+(\W|\d|_)*يفتح+(\W|\d|_)*سيرفر|السيرفر+(\W|\d|_)*/gi.test(newx.content)
+  if(question1) {
+    if (cooldown.has(old.author.id))
+    return old.delete();
+
+    cooldown.add(old.author.id);
+    setTimeout(() => {
+      cooldown.delete(old.author.id);
+    }, 50000);
+
+    return newx.channel.send("لقد تم إغلاق سيرفر عربز ام سي").then(r => {
+      r.delete(7000);
+      newx.delete(7000);
+    });
+  }
+});
+
 bot.on("ready", async () => {
   log(`Username: ${bot.user.tag}`);
   log(`on: ${bot.guilds.size} guild(s)`);
