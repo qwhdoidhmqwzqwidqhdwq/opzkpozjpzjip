@@ -107,14 +107,14 @@ bot.on("messageUpdate", async (old, newx) => {
     * Version: beta
     */
 
-    let embed = new Discord.RichEmbed()
+    let updated = new Discord.RichEmbed()
     .setAuthor("Devvy | Message Edited")
     .setDescription(`<@${old.author.id}> updated message!`)
     .addField("Before", old.content)
     .addField("After", newx.content)
     .setFooter(old.guild.name)
-    .setColor(config.blue)
-    logs.send(embed);
+    .setColor(config.blue);
+    logs.send(updated);
 
   }
 
