@@ -100,6 +100,7 @@ bot.on("messageUpdate", async (old, newx) => {
       old.channel.send(embed).then(r => r.delete(12000));
       return logs.send(embed2);
     }
+  }
 
     /*
     *
@@ -107,8 +108,6 @@ bot.on("messageUpdate", async (old, newx) => {
     * Version: beta
     *
     */
-    if(newx.length > 2000) return;
-    if(!newx) return;
     let updated = new Discord.RichEmbed()
     .setAuthor("Devvy | Message Edited")
     .setDescription(`<@${old.author.id}> updated message!`)
@@ -117,8 +116,6 @@ bot.on("messageUpdate", async (old, newx) => {
     .setFooter(old.guild.name)
     .setColor(config.blue);
     logs.send(updated);
-
-  }
 
 
 });
