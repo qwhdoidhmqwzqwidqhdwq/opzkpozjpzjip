@@ -108,13 +108,12 @@ bot.on("messageUpdate", async (old, newx) => {
     * Version: beta
     */
 
-    
+
     let updated = new Discord.RichEmbed()
     .setAuthor("Devvy | Message Edited")
-    .setDescription(`<@${old.author.id}> updated message!`)
     .addField("Before", old.content)
     .addField("After", newx.content)
-    .setFooter(old.guild.name)
+    .setFooter(`ID: ${old.author.id}, Tag: ${old.author.tag}`)
     .setColor(config.blue);
     logs.send(updated).catch(err => {
       if(err.content == "RichEmbed field values may not be empty.") {
