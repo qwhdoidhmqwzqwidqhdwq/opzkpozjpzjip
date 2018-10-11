@@ -45,7 +45,7 @@ bot.on("message", async msg => {
         msg.chaanel.send("`clear` - لإزالة الالوان التي لديك الان الرجاء كتابة هذه الكلمة").then(r => r.delete(5000));
       } else {
         msg.member.addRole("499981208055316484", "By devvy - #colors");
-        msg.channel.send(`${bot.emojis.find(c => c.name == "yes")} تم إضافة اللون`).then(r => r.delete(5000));
+        msg.channel.send(`${bot.emojis.find(c => c.name == "yes")} تم إضافة اللون`).then(r => r.delete({ timeout: 5000 }));
       }
     }
     msg.delete(5000);
