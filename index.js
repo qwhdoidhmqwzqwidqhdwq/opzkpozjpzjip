@@ -46,7 +46,6 @@ bot.on("message", async msg => {
       } else {
         msg.member.addRole("499981208055316484", "By devvy - #colors");
         msg.channel.send(`${bot.emojis.find(c => c.name == "yes")} تم إضافة اللون`).then(r => r.delete(5000));
-        return msg.delete();
       }
     }
     msg.delete(5000);
