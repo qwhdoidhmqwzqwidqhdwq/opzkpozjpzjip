@@ -38,7 +38,7 @@ bot.on("message", async msg => {
   let no = bot.emojis.find(e => e.id == "463934399210061854");
   let invitecheck = /(?:https?:\/)?discord(\W|\d|_)*(?:app.com\/invite|.gg)+\/(\W|\d|_)*[a-zA-Z0-9]/gi.test(msg.content);
   if(invitecheck) {
-    if(!msg.member.roles.some(r => r.name == "Ads")) {
+    if(!msg.member.roles.some(r => r.id == "499294784729382914")) {
       msg.delete();
       let embed = new Discord.RichEmbed()
       .setAuthor("Devvy | Auto Moderation")
@@ -78,11 +78,13 @@ bot.on("message", async msg => {
 
 
 bot.on("messageUpdate", async (old, newx) => {
+  let logs = old.guild.channels.find(c => c.id == "499292486821478410");
+
 
   let no = bot.emojis.find(e => e.id == "463934399210061854");
   let invitecheck = /(?:https?:\/)?discord(\W|\d|_)*(?:app.com\/invite|.gg)+\/(\W|\d|_)*[a-zA-Z0-9]/gi.test(newx.content);
   if(invitecheck) {
-    if(!newx.member.roles.some(r => r.name == "Ads")) {
+    if(!newx.member.roles.some(r => r.id == "499294784729382914")) {
       old.delete();
       let embed = new Discord.RichEmbed()
       .setAuthor("Devvy | Auto Moderation")
@@ -96,9 +98,24 @@ bot.on("messageUpdate", async (old, newx) => {
       .setFooter(`${old.guild.name}`)
       .setColor(config.blue)
       old.channel.send(embed).then(r => r.delete(12000));
-      let logs = old.guild.channels.find(c => c.id == "499292486821478410");
       return logs.send(embed2);
     }
+
+    /*
+    *
+    * Logging edited messages..
+    * Version: beta
+    */
+
+    let embed = new Discord.RichEmbed()
+    .setAuthor("Devvy | Message Edited")
+    .setDescription(`<@${old.author.id}> updated message!`)
+    .addField("Before", old.content)
+    .addField("After", newx.content)
+    .setFooter(old.guild.name)
+    .setColor(config.blue)
+    logs.send(embed);
+
   }
 
 
@@ -138,8 +155,8 @@ bot.elevation = function(msg) {
   let permlvl = 0;
   let x2 = msg.guild.roles.find(c => c.name === "Staff");
   if(x2 && msg.member.roles.has(x2.id)) permlvl = 1;
-  let x3 = msg.guild.roles.find(c => c.name === "Owner");
-  if(x3 && msg.member.roles.has(x3.id)) permlvl = 2;
+  let x3 = msg.guild.roles.find(c => c.id === "468403762617122821");
+  if(x3 && msg.member.roles.has(x3)) permlvl = 2;
   if(msg.author.id === config.owner_id) permlvl = 3;
   return permlvl;
 
