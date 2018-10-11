@@ -78,6 +78,7 @@ bot.on("message", async msg => {
 
 
 bot.on("messageUpdate", async (old, newx) => {
+  if(old.author.bot) return;
   let logs = old.guild.channels.find(c => c.id == "499292486821478410");
 
 
@@ -103,11 +104,11 @@ bot.on("messageUpdate", async (old, newx) => {
   }
 
     /*
-    *
     * Logging edited messages..
     * Version: beta
-    *
     */
+
+    
     let updated = new Discord.RichEmbed()
     .setAuthor("Devvy | Message Edited")
     .setDescription(`<@${old.author.id}> updated message!`)
