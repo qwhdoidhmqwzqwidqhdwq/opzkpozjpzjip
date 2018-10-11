@@ -77,7 +77,7 @@ bot.on("message", async msg => {
 });
 
 
-bot.on("messageUpdate", async (old, newx) => {
+bot.on("messageUpdate", async (newx, old) => {
   let logs = old.guild.channels.find(c => c.id == "499292486821478410");
 
 
