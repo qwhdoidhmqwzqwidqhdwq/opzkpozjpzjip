@@ -44,7 +44,7 @@ bot.on("message", async msg => {
         msg.channel.send("يبدو ان لديك لون بالفعل, الرجاء إزالة الالوان الموجودة معك حاليا لتتمكن من اخذ لون آخر").then(r => r.delete(5000));
         msg.chaanel.send("`clear` - لإزالة الالوان التي لديك الان الرجاء كتابة هذه الكلمة").then(r => r.delete(5000));
       } else {
-        msg.member.addRole(msg.guild.roles.find(c => c.id == "499981208055316484"));
+        msg.member.addRole("499981208055316484", "By devvy - #colors");
         msg.channel.send(`${bot.emojis.find(c => c.name == "yes")} تم إضافة اللون`).then(r => r.delete(5000));
         return msg.delete();
       }
