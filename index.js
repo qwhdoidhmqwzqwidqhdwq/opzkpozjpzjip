@@ -105,8 +105,10 @@ bot.on("messageUpdate", async (old, newx) => {
     *
     * Logging edited messages..
     * Version: beta
+    *
     */
-
+    if(newx.length > 2000) return;
+    if(!newx) return;
     let updated = new Discord.RichEmbed()
     .setAuthor("Devvy | Message Edited")
     .setDescription(`<@${old.author.id}> updated message!`)
