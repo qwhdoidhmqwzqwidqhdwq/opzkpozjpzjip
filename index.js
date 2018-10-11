@@ -30,7 +30,9 @@ fs.readdir("./cmds/", (err, files) => {
 bot.on("message", async msg => {
   if(msg.channel.id == "499978424736022548") {
     if(msg.author.bot) {
-      msg.delete();
+      if(msg.author.id !== "475561660489269279") {
+        msg.delete();
+      }
     }
     if(msg.member.roles.some(c => c.id == "499982278278119425")) return;
     let gold = /gold/gi.test(msg.content);
