@@ -28,6 +28,25 @@ fs.readdir("./cmds/", (err, files) => {
 
 
 bot.on("message", async msg => {
+  if(msg.channel.name == "colors") {
+    if(msg.author.bot) {
+      msg.delete();
+    }
+    if(msg.member.roles.some(c => c.id == "499982278278119425")) return;
+    let gold = /gold/gi.test(msg.content);
+    let skyblue = /skyblue/gi.test(msg.content);
+    let blue = /blue/gi.test(msg.content);
+    let red = /red/gi.test(msg.content);
+    let yellow = /yellow/gi.test(msg.content);
+
+    if(yellow) {
+      if(msg.member.roles.some(c => c.name == "▫ Cyan") || msg.member.roles.some(c => c.name == "▫ Red") || msg.member.roles.some(c => c.name == "▫ Blue")) {
+        msg.channel.send("يبدو ان لديك لون بالفعل, الرجاء إزالة الالوان الموجودة معك حاليا لتتمكن من اخذ لون آخر").then(r => r.delete(5000));
+        msg.chaanel.send("`clear` - لإزالة الالوان التي لديك الان الرجاء كتابة هذه الكلمة").then(r => r.delete(5000));
+      }
+    }
+    msg.delete(5000);
+  }
   if(msg.author.bot) return;
 
   /*
