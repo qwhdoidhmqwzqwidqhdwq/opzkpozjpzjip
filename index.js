@@ -28,7 +28,7 @@ fs.readdir("./cmds/", (err, files) => {
 
 
 bot.on("message", async msg => {
-  if(msg.channel.name == "colors") {
+  if(msg.channel.id == "499978424736022548") {
     if(msg.author.bot) {
       msg.delete();
     }
@@ -46,6 +46,7 @@ bot.on("message", async msg => {
       } else {
         msg.member.roles.add(msg.guild.roles.find(c => c.id == "499981208055316484"));
         msg.channel.send(`${bot.emojis.find(c => c.name == "yes")} تم إضافة اللون`).then(r => r.delete(5000));
+        return msg.delete();
       }
     }
     msg.delete(5000);
