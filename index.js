@@ -42,8 +42,11 @@ bot.on("message", async msg => {
     let yellow = /yellow/gi.test(msg.content);
 
     if(yellow) {
-      if(msg.member.roles.some(c => c.name == "▫ Cyan") || msg.member.roles.some(c => c.name == "▫ Red") || msg.member.roles.some(c => c.name == "▫ Blue")) {
-        msg.channel.send("يبدو ان لديك لون بالفعل, الرجاء إزالة الالوان الموجودة معك حاليا لتتمكن من اخذ لون آخر").then(r => r.delete(5000));
+      if(!msg.member.role.some(c => c.id == "474803377490886657")) {
+        return msg.delete();
+      }
+      if(msg.member.roles.some(c => c.name == "▫ Cyan") || msg.member.roles.some(c => c.name == "▫ Red") || msg.member.roles.some(c => c.name == "▫ Blue") || msg.member.roles.some(c => c.name == "▫ Skyblue") || msg.member.roles.some(c => c.name == "▫ Green") || msg.member.roles.some(c => c.name == "▫ Gold")) {
+        msg.channel.send("يبدو أن لديك لون بالفعل, الرجاء إزالة اللون الموجود لديك حاليا لأخذ لون آخر").then(r => r.delete(5000));
         msg.chaanel.send("`clear` - لإزالة الالوان التي لديك الان الرجاء كتابة هذه الكلمة").then(r => r.delete(5000));
       } else {
         msg.member.addRole("499981208055316484", "By devvy - #colors");
@@ -132,7 +135,8 @@ bot.on("messageUpdate", async (old, newx) => {
     * Version: beta
     */
 
-
+    if(old.content > 2000) return;
+    if(newx.content > 2000) return;
     let updated = new Discord.RichEmbed()
     .setAuthor("Devvy | Message Edited")
     .addField("Before", old.content)
