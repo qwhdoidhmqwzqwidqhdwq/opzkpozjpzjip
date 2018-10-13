@@ -21,6 +21,7 @@ module.exports = {
       var embed = new Discord.RichEmbed()
       .setColor(config.blue)
       .setDescription(`Usage: \`/clear <amount> [user]\``)
+      msg.delete();
       return msg.channel.send(embed).then(m => m.delete(15000));
     }
     if(params[0] > 100){
@@ -41,6 +42,7 @@ module.exports = {
       .setColor(config.blue)
       .setDescription(`Successfully deleted \`${msgs.size}\` message(s)`)
       msg.channel.send(embed).then(m => m.delete(3000));
+      msg.delete();
 
       let logs = msg.guild.channels.find(c => c.id == "499292486821478410");
       var embed2 = new Discord.RichEmbed()
