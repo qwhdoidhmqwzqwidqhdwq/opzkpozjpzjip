@@ -22,7 +22,7 @@ module.exports = {
       .setColor(config.invis)
       .setAuthor(`${msg.author.tag} `, avatar)
       .setDescription(`Usage: \`/clear <amount> [user]\``)
-      return message.channel.send(embed).then(m => m.delete(15000));
+      return msg.channel.send(embed).then(m => m.delete(15000));
     }
     if(args[0] > 100){
       var embed = new Discord.RichEmbed()
@@ -45,16 +45,17 @@ module.exports = {
       .setDescription(`Successfully deleted \`${msgs.size}\` message(s)`)
       msg.channel.send(embed).then(m => m.delete(3000));
 
-      let modlog = msg.guild.channels.find("name", "mod-log");
+      let logs = msg.guild.channels.find(c => c.id == "499292486821478410");
       var embed2 = new Discord.RichEmbed()
       .setColor(config.invis)
-      .setAuthor(`Clear `, avatar)
-      .addField(`Moderator`, `${sender.tag} (${sender.id})`, true)
-      .addField(`Amount`, `  \`${msgs.size}/${args[0]}\``, true)
-      .addField(`Channel`, `\`${msg.channel.name}\``, true)
+      .setAuthor("Devvy | Logger")
+      .addField(`Moderator`, `<@${msg.author.id}>`, true)
+      .addField(`Command`, `\`clear\``, true)
+      .addField(`Amount`, `\`${msgs.size}\``, true)
       .addField(`User`, `${mm ? mm : "`None`"}`, true)
+      .addField(`Channel`, `<#${msg.channel.id}>`, true)
       .setTimestamp()
-      modlog.send(embed2);
+      logs.send(embed2);
       }).catch(err => {
         return console.error(err, msg.channel.send('I cant delete messages older than 14 days.'));
       }
