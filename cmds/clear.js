@@ -19,13 +19,13 @@ module.exports = {
 
     if(isNaN(params[0])) {
       var embed = new Discord.RichEmbed()
-      .setColor(config.invis)
+      .setColor(config.blue)
       .setDescription(`Usage: \`/clear <amount> [user]\``)
       return msg.channel.send(embed).then(m => m.delete(15000));
     }
     if(params[0] > 100){
       var embed = new Discord.RichEmbed()
-      .setColor(config.invis)
+      .setColor(config.blue)
       .setDescription(`${bot.emojis.find(c => c.name == "wrong")} Messages amount can't be higher than 100.`)
       return msg.channel.send(embed).then(m => m.delete(5000));
     }
@@ -38,13 +38,13 @@ module.exports = {
       msg.channel.bulkDelete(messages).then(msgs => {
 
       var embed = new Discord.RichEmbed()
-      .setColor(config.invis)
+      .setColor(config.blue)
       .setDescription(`Successfully deleted \`${msgs.size}\` message(s)`)
       msg.channel.send(embed).then(m => m.delete(3000));
 
       let logs = msg.guild.channels.find(c => c.id == "499292486821478410");
       var embed2 = new Discord.RichEmbed()
-      .setColor(config.invis)
+      .setColor(config.blue)
       .setAuthor("Devvy | Logger")
       .addField(`Moderator`, `<@${msg.author.id}>`, true)
       .addField(`Command`, `\`clear\``, true)
