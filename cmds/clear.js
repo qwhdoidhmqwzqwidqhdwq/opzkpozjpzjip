@@ -25,7 +25,7 @@ module.exports = {
     }
     if(params[0] > 100){
       var embed = new Discord.RichEmbed()
-      .setColor(config.blue)
+      .setColor(config.red)
       .setDescription(`${bot.emojis.find(c => c.name == "wrong")} Messages amount can't be higher than 100.`)
       return msg.channel.send(embed).then(m => m.delete(5000));
     }
