@@ -28,33 +28,6 @@ fs.readdir("./cmds/", (err, files) => {
 
 
 bot.on("message", async msg => {
-  if(msg.channel.id == "499978424736022548") {
-    if(msg.author.bot) {
-      if(msg.author.id !== "475561660489269279") {
-        msg.delete();
-      }
-    }
-    if(msg.member.roles.some(c => c.id == "499982278278119425")) return;
-    let gold = /gold/gi.test(msg.content);
-    let skyblue = /skyblue/gi.test(msg.content);
-    let blue = /blue/gi.test(msg.content);
-    let red = /red/gi.test(msg.content);
-    let yellow = /yellow/gi.test(msg.content);
-
-    if(yellow) {
-      if(!msg.member.role.some(c => c.id == "474803377490886657")) {
-        return msg.delete();
-      }
-      if(msg.member.roles.some(c => c.name == "▫ Cyan") || msg.member.roles.some(c => c.name == "▫ Red") || msg.member.roles.some(c => c.name == "▫ Blue") || msg.member.roles.some(c => c.name == "▫ Skyblue") || msg.member.roles.some(c => c.name == "▫ Green") || msg.member.roles.some(c => c.name == "▫ Gold")) {
-        msg.channel.send("يبدو أن لديك لون بالفعل, الرجاء إزالة اللون الموجود لديك حاليا لأخذ لون آخر").then(r => r.delete(5000));
-        msg.chaanel.send("`clear` - لإزالة الالوان التي لديك الان الرجاء كتابة هذه الكلمة").then(r => r.delete(5000));
-      } else {
-        msg.member.addRole("499981208055316484", "By devvy - #colors");
-        msg.channel.send(`${bot.emojis.find(c => c.name == "yes")} تم إضافة اللون`).then(message => message.delete(5000));
-      }
-    }
-    msg.delete(5000);
-  }
   if(msg.author.bot) return;
 
   /*
