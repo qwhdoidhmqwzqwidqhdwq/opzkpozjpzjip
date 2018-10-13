@@ -46,11 +46,11 @@ module.exports = {
       var embed2 = new Discord.RichEmbed()
       .setColor(config.blue)
       .setAuthor("Devvy | Logger")
-      .addField(`Moderator`, `<@${msg.author.id}>`, true)
-      .addField(`Command`, `\`clear\``, true)
-      .addField(`Amount`, `\`${msgs.size}\``, false)
-      .addField(`User`, `${mm ? mm : "`None`"}`, false)
-      .addField(`Channel`, `<#${msg.channel.id}>`, false)
+      .addField(`Command`, `\`clear\``, false)
+      .addField(`Moderator`, `<@${msg.author.id}>`, true
+      .addField(`Amount`, `\`${msgs.size}\``, true)
+      .addField(`User`, `${mm ? mm : "`None`"}`, true)
+      .addField(`Channel`, `<#${msg.channel.id}>`, true)
       .setTimestamp()
       logs.send(embed2);
       }).catch(err => {
