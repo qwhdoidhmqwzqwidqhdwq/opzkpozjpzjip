@@ -48,9 +48,9 @@ module.exports = {
       .setAuthor("Devvy | Logger")
       .addField(`Moderator`, `<@${msg.author.id}>`, true)
       .addField(`Command`, `\`clear\``, true)
-      .addField(`Amount`, `\`${msgs.size}\``, true)
-      .addField(`User`, `${mm ? mm : "`None`"}`, true)
-      .addField(`Channel`, `<#${msg.channel.id}>`, true)
+      .addField(`Amount`, `\`${msgs.size}\``, false)
+      .addField(`User`, `${mm ? mm : "`None`"}`, false)
+      .addField(`Channel`, `<#${msg.channel.id}>`, false)
       .setTimestamp()
       logs.send(embed2);
       }).catch(err => {
