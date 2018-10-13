@@ -17,14 +17,14 @@ module.exports = {
     var mm = msg.mentions.members.first();
     const filterBy = mm ? mm.id : bot.user.id;
 
-    if(isNaN(args[0])) {
+    if(isNaN(params[0])) {
       var embed = new Discord.RichEmbed()
       .setColor(config.invis)
       .setAuthor(`${msg.author.tag} `, avatar)
       .setDescription(`Usage: \`/clear <amount> [user]\``)
       return msg.channel.send(embed).then(m => m.delete(15000));
     }
-    if(args[0] > 100){
+    if(params[0] > 100){
       var embed = new Discord.RichEmbed()
       .setColor(config.invis)
       .setAuthor(`${msg.author.tag} `, avatar)
@@ -32,10 +32,10 @@ module.exports = {
       return msg.channel.send(embed).then(m => m.delete(5000));
     }
     msg.channel.fetchMessages({
-      limit: args[0],
+      limit: params[0],
       }).then((messages) => {
       if (mm) {
-      messages = msg.filter(m => m.author.id === filterBy).array().slice(0, args[0]);
+      messages = msg.filter(m => m.author.id === filterBy).array().slice(0, params[0]);
       }
       msg.channel.bulkDelete(messages).then(msgs => {
 
