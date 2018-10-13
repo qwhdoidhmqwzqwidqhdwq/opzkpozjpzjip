@@ -33,7 +33,7 @@ module.exports = {
       limit: params[0],
       }).then((messages) => {
       if (mm) {
-      messages = msg.filter(m => m.author.id === filterBy).array().slice(0, params[0]);
+      messages = messages.filter(m => m.author.id === filterBy).array().slice(0, params[0]);
       }
       msg.channel.bulkDelete(messages).then(msgs => {
 
