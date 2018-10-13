@@ -47,11 +47,11 @@ module.exports = {
       .setColor(config.blue)
       .setAuthor("Devvy | Logger")
       .addField(`Command`, `\`clear\``, false)
-      .addField(`Moderator`, `<@${msg.author.id}>`, true
+      .addField(`Moderator`, `<@${msg.author.id}>`, true)
       .addField(`Amount`, `\`${msgs.size}\``, true)
       .addField(`User`, `${mm ? mm : "`None`"}`, true)
       .addField(`Channel`, `<#${msg.channel.id}>`, true)
-      .setTimestamp()
+      .setTimestamp();
       logs.send(embed2);
       }).catch(err => {
         return console.error(err, msg.channel.send('I cant delete messages older than 14 days.'));
