@@ -58,7 +58,7 @@ module.exports = {
       logs.send(embed2);
       }).catch(err => {
         return console.error(err, msg.channel.send('I cant delete messages older than 14 days.'));
-      }
+      });
     });
   }
 }
