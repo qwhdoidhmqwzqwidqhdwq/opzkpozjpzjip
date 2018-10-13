@@ -20,14 +20,12 @@ module.exports = {
     if(isNaN(params[0])) {
       var embed = new Discord.RichEmbed()
       .setColor(config.invis)
-      .setAuthor(`${msg.author.tag} `, avatar)
       .setDescription(`Usage: \`/clear <amount> [user]\``)
       return msg.channel.send(embed).then(m => m.delete(15000));
     }
     if(params[0] > 100){
       var embed = new Discord.RichEmbed()
       .setColor(config.invis)
-      .setAuthor(`${msg.author.tag} `, avatar)
       .setDescription(`${bot.emojis.find(c => c.name == "wrong")} Messages amount can't be higher than 100.`)
       return msg.channel.send(embed).then(m => m.delete(5000));
     }
@@ -41,7 +39,6 @@ module.exports = {
 
       var embed = new Discord.RichEmbed()
       .setColor(config.invis)
-      .setAuthor(`${message.author.tag} `, avatar)
       .setDescription(`Successfully deleted \`${msgs.size}\` message(s)`)
       msg.channel.send(embed).then(m => m.delete(3000));
 
