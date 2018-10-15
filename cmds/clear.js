@@ -6,7 +6,7 @@ module.exports = {
     name: "clear"
   },
   settings: {
-    permLevel: 3,
+    permLevel: 1,
     guildOnly: true,
     enabled: true,
     aliases: ["prune", "purge", "clearchat", "cc"]
