@@ -127,6 +127,26 @@ bot.on("messageUpdate", async (old, newx) => {
 
 });
 
+bot.on("messageDelete", async msg => {
+  if(msg.content.length > 2010) return;
+
+  let logs = msg.guild.channels.find(c => c.id == "499292486821478410");
+
+  let embed = new Discord.RichEmbed()
+  .setAuthor("Devvy | Message Deleted")
+  .addField("Content", msg.content)
+  .setFooter(`ID: ${msg.author.id} || Tag: ${msg.author.tag}`)
+  .setColor(config.blue);
+  logs.send(embed).catch(err => {
+    if(err.content == "RichEmbed field values may not be empty.") {
+      return;
+    } else {
+      console.log(err);
+    }
+  });
+
+});
+
 bot.on("ready", async () => {
   log(`Username: ${bot.user.tag}`);
   log(`on: ${bot.guilds.size} guild(s)`);
