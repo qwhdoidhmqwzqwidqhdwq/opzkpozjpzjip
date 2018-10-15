@@ -131,7 +131,9 @@ bot.on("messageDelete", async msg => {
   if(msg.author.bot) {
     if(msg.author.id !== bot.user.id) return;
   }
+
   if(msg.content.length > 2010) return;
+  if(msg.content.length < 0) return;
 
   let logs = msg.guild.channels.find(c => c.id == "499292486821478410");
 
