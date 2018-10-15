@@ -14,7 +14,7 @@ module.exports = {
   run: async (bot, msg, params) => {
     const sender = msg.author;
     const avatar = msg.author.displayAvatarURL;
-    var mm = msg.mentions.members.first();
+    var mm = msg.mentions.members.first() || msg.guild.members.get(params[1]);
     const filterBy = mm ? mm.id : bot.user.id;
 
     if(isNaN(params[0])) {
