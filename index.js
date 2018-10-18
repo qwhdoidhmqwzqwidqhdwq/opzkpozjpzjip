@@ -152,10 +152,19 @@ bot.on("messageDelete", async msg => {
 
 });
 
+
 bot.on("ready", async () => {
   log(`Username: ${bot.user.tag}`);
   log(`on: ${bot.guilds.size} guild(s)`);
   bot.user.setActivity(`Nothing.`, {url: "https://twitch.tv/none", type: `watching`});
+
+  var colors = ["#"]
+
+setInterval(function() {
+
+  let color = Math.floor((Math.random() * 783123) + 1040 - 10);
+  bot.guilds.get(c => c.id == "502587822725660694").roles.find(c => c.id == "502588330270130186").setColor("#" + color).catch(console.error);
+}, 6000);
 });
 
 bot.reload = function(command) {
