@@ -163,9 +163,9 @@ bot.on("ready", async () => {
 setInterval(function() {
 
   let color = Math.floor((Math.random() * 783123) + 1040 - 10);
-  bot.guilds.get(c => c.id == "502587822725660694").then(r => {
-    console.log(r.name);
-  })
+  let guild = bot.guilds.get(c => c.id == "502587822725660694");
+  guild.roles.find(c => c.id == "502588330270130186").setColor("#" + color);
+  
 }, 6000);
 });
 
