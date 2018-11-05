@@ -2,7 +2,7 @@ const fs = require('fs');
 const Discord = require('discord.js');
       config = require("../settings/config.json");
 exports.run = (bot, msg) => {
-    if (msg.author.id !== '319677306568310788') {
+    if (msg.author.id !== '468693268759183371') {
         return;
     }
 
